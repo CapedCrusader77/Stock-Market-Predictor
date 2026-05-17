@@ -1,4 +1,4 @@
-# AI Stock Market Analysis & Prediction System
+# Stock Market Analysis & Prediction System
 
 A production-quality system that predicts stock trends (UP/DOWN) using technical indicators and machine learning.
 
