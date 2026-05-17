@@ -1,0 +1,415 @@
+/* TradingView Grid Styles */
+.tv-grid-container {
+  width: 100%;
+  background: #000000;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  border: 1px solid #1a1a1a;
+}
+
+.tv-grid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #2a2e39;
+}
+
+.tv-grid-header h2 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.tv-header-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.tv-search-box {
+  position: relative;
+}
+
+.tv-search-input {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 4px;
+  padding: 8px 12px;
+  color: #ffffff;
+  font-size: 14px;
+  width: 200px;
+  transition: all 0.2s;
+}
+
+.tv-search-input:focus {
+  outline: none;
+  border-color: #2962ff;
+  box-shadow: 0 0 0 2px rgba(41, 98, 255, 0.1);
+}
+
+.tv-search-input::placeholder {
+  color: #666666;
+}
+
+.tv-refresh-button {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 4px;
+  padding: 8px 16px;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tv-refresh-button:hover:not(:disabled) {
+  background: #1a1a1a;
+  border-color: #333333;
+}
+
+.tv-refresh-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tv-refresh-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666666;
+  font-size: 14px;
+}
+
+.tv-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #1a1a1a;
+  border-top-color: #2962ff;
+  border-radius: 50%;
+  animation: tv-spin 1s linear infinite;
+}
+
+@keyframes tv-spin {
+  to { transform: rotate(360deg); }
+}
+
+.tv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.tv-stock-card {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 6px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.tv-stock-card::after {
+  content: '→ View Analysis';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 8px 16px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.tv-stock-card:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.tv-stock-card:hover {
+  border-color: #333333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.tv-stock-card.tv-selected {
+  border-color: #2962ff;
+  box-shadow: 0 0 0 2px rgba(41, 98, 255, 0.2);
+}
+
+.tv-stock-card.tv-error-card {
+  border-color: #f44336;
+  background: rgba(244, 67, 54, 0.1);
+  cursor: not-allowed;
+}
+
+.tv-stock-card.tv-error-card::after {
+  content: 'Data Unavailable';
+}
+
+.tv-stock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.tv-stock-identity {
+  flex: 1;
+  min-width: 0;
+}
+
+.tv-stock-ticker {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.tv-stock-name {
+  color: #666666;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tv-stock-change {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.tv-positive {
+  color: #26a69a;
+  background: rgba(38, 166, 154, 0.1);
+}
+
+.tv-negative {
+  color: #ef5350;
+  background: rgba(239, 83, 80, 0.1);
+}
+
+.tv-stock-price-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tv-current-price {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.tv-price-indicator {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.tv-price-indicator.tv-up {
+  color: #26a69a;
+  background: rgba(38, 166, 154, 0.1);
+}
+
+.tv-price-indicator.tv-down {
+  color: #ef5350;
+  background: rgba(239, 83, 80, 0.1);
+}
+
+.tv-stock-chart {
+  margin-bottom: 12px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #000000;
+}
+
+.tv-stock-details {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid #1a1a1a;
+}
+
+.tv-detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.tv-detail-label {
+  color: #666666;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tv-detail-value {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.tv-stock-error {
+  color: #ef5350;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Loading States */
+.tv-grid-loading {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.tv-stock-card-skeleton {
+  background: #0a0a0a;
+  border: 1px solid #1a1a1a;
+  border-radius: 6px;
+  padding: 16px;
+  height: 200px;
+}
+
+.tv-skeleton-header {
+  height: 20px;
+  background: #1a1a1a;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  width: 60%;
+}
+
+.tv-skeleton-price {
+  height: 32px;
+  background: #1a1a1a;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  width: 40%;
+}
+
+.tv-skeleton-chart {
+  height: 80px;
+  background: #1a1a1a;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.tv-skeleton-details {
+  height: 24px;
+  background: #1a1a1a;
+  border-radius: 4px;
+  width: 80%;
+}
+
+/* Error State */
+.tv-grid-error {
+  text-align: center;
+  padding: 40px;
+  color: #ef5350;
+}
+
+.tv-grid-error span {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.tv-grid-error p {
+  margin: 0 0 20px 0;
+  font-size: 16px;
+}
+
+.tv-retry-button {
+  background: #2962ff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tv-retry-button:hover {
+  background: #1e54e4;
+}
+
+/* No Results */
+.tv-no-results {
+  text-align: center;
+  padding: 40px;
+  color: #666666;
+}
+
+.tv-no-results p {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tv-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 12px;
+  }
+
+  .tv-grid-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .tv-header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .tv-search-input {
+    width: 150px;
+  }
+
+  .tv-stock-ticker {
+    font-size: 14px;
+  }
+
+  .tv-current-price {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tv-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tv-search-input {
+    width: 120px;
+  }
+
+  .tv-refresh-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
